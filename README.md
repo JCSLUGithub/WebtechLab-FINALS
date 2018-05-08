@@ -34,89 +34,89 @@ This is the repository created for the project of the Final quarter of the semes
 
 ## Task Checklist
 ###### Administrator Module
-[ ] Account Log-in
-[ ] User Account Management
-   [ ] Client User Account Management
-      [ ] Add Client Account
-      [ ] Remove Client Account
-      [ ] Edit Client Profile Information
-   [ ] Service Proider User Account Management
-      [ ] Add Service Provider Account
-      [ ] Remove Service Provider Account
-      [ ] Edit Service Provider Profile Information
-      [ ] Approve/Reject Registration Request
-[ ] Product Item Management
-   [ ] Adding of a Product
-   [ ] Removal of a Product
-   [ ] Edit Product Details
-   [ ] Edit Product Rental Pricing
-   [ ] Edit Contact Information
-[ ] Client Reservation Management and Monitoring
-   [ ] Reservations Made by Clients to Service Providers can be Seen
-   [ ] Reservations can be Accepted/Rejected
-[ ] Transaction Management and Monitoring
-   [ ] Completed and Failed Transaction
-   [ ] Transactions In-Progress
-   [ ] Cancel Transactions In-Progress
-[ ] Administrator Profile
-   [ ] Edit Profile Details
-[ ] Super Administrator Capabilities
-   [ ] Edit Profile Details
-   [ ] Add an Administrator Account
-   [ ] Remove an Administrator Account
-   [ ] Edit Administrator Profile Information
+- [ ] Account Log-in
+- [ ] User Account Management
+   - [ ] Client User Account Management
+      - [ ] Add Client Account
+      - [ ] Remove Client Account
+      - [ ] Edit Client Profile Information
+   - [ ] Service Proider User Account Management
+      - [ ] Add Service Provider Account
+      - [ ] Remove Service Provider Account
+      - [ ] Edit Service Provider Profile Information
+      - [ ] Approve/Reject Registration Request
+- [ ] Product Item Management
+   - [ ] Adding of a Product
+   - [ ] Removal of a Product
+   - [ ] Edit Product Details
+   - [ ] Edit Product Rental Pricing
+   - [ ] Edit Contact Information
+- [ ] Client Reservation Management and Monitoring
+   - [ ] Reservations Made by Clients to Service Providers can be Seen
+   - [ ] Reservations can be Accepted/Rejected
+- [ ] Transaction Management and Monitoring
+   - [ ] Completed and Failed Transaction
+   - [ ] Transactions In-Progress
+   - [ ] Cancel Transactions In-Progress
+- [ ] Administrator Profile
+   - [ ] Edit Profile Details
+- [ ] Super Administrator Capabilities
+   - [ ] Edit Profile Details
+   - [ ] Add an Administrator Account
+   - [ ] Remove an Administrator Account
+   - [ ] Edit Administrator Profile Information
 ###### Service Provider Module
-[ ] Account Registration
-   [ ] Account Request Confirmation to Administrator
-[ ] Account Log-in
-[ ] Service Management
-   [ ] Post Product
-      [ ] Add Product Details
-      [ ] Add Product Rental Pricing
-      [ ] Add Contact Information
-      [ ] Add Product Availability
-   [ ] Manage Posted Product
-      [ ] Remove Posted Product
-      [ ] Edit Product Details
-      [ ] Edit Product Rental Pricing
-      [ ] Edit Contact Information
-      [ ] Edit Product Availability
-[ ] Client Reservation Management and Monitoring
-   [ ] Client Reservations can be Seen
-   [ ] Client Reservations can be Accepted/Rejected
-[ ] Transaction Management and Monitoring
-   [ ] Transaction History
-      [ ] Completed and Failed Transactions
-      [ ] Transactions In-Progress
-      [ ] Cancel Transactions In-Progress
-[ ] Service Provider Profile
-   [ ] Edit Profile Details
-      [ ] Edit Basic Service Provider Information
-      [ ] Edit Contact Information
-      [ ] Edit Service Provider Business Address
+- [ ] Account Registration
+   - [ ] Account Request Confirmation to Administrator
+- [ ] Account Log-in
+- [ ] Service Management
+   - [ ] Post Product
+      - [ ] Add Product Details
+      - [ ] Add Product Rental Pricing
+      - [ ] Add Contact Information
+      - [ ] Add Product Availability
+   - [ ] Manage Posted Product
+      - [ ] Remove Posted Product
+      - [ ] Edit Product Details
+      - [ ] Edit Product Rental Pricing
+      - [ ] Edit Contact Information
+      - [ ] Edit Product Availability
+- [ ] Client Reservation Management and Monitoring
+   - [ ] Client Reservations can be Seen
+   - [ ] Client Reservations can be Accepted/Rejected
+- [ ] Transaction Management and Monitoring
+   - [ ] Transaction History
+      - [ ] Completed and Failed Transactions
+      - [ ] Transactions In-Progress
+      - [ ] Cancel Transactions In-Progress
+- [ ] Service Provider Profile
+   - [ ] Edit Profile Details
+      - [ ] Edit Basic Service Provider Information
+      - [ ] Edit Contact Information
+      - [ ] Edit Service Provider Business Address
 ###### Client Module
-[ ] Account Registration
-[ ] Account Log-in
-[ ] Website Service Use
-   [ ] Product Search
-      [ ] Product Browse
-      [ ] Product Category Search
-      [ ] Search Bar
-   [ ] Service Provider Search
-      [ ] Product Category Search
-      [ ] Search Bar
-   [ ] Clothing Reservation
-      [ ] Reservation Request
-      [ ] Pick-Up Date
-      [ ] Pick-Up Address or Service Provider Address
-[ ] Transaction Management and Monitoring
-   [ ] Transaction History
-      [ ] Completed and Failed Transactions
-      [ ] Transactions In-Progress
-[ ] Client Profile
-   [ ] Edit Profile Details
-      [ ] Edit Basic Client Information
-      [ ] Edit Client Billing/Shipping Address
+- [ ] Account Registration
+- [ ] Account Log-in
+- [ ] Website Service Use
+   - [ ] Product Search
+      - [ ] Product Browse
+      - [ ] Product Category Search
+      - [ ] Search Bar
+   - [ ] Service Provider Search
+      - [ ] Product Category Search
+      - [ ] Search Bar
+   - [ ] Clothing Reservation
+      - [ ] Reservation Request
+      - [ ] Pick-Up Date
+      - [ ] Pick-Up Address or Service Provider Address
+- [ ] Transaction Management and Monitoring
+   - [ ] Transaction History
+      - [ ] Completed and Failed Transactions
+      - [ ] Transactions In-Progress
+- [ ] Client Profile
+   - [ ] Edit Profile Details
+      - [ ] Edit Basic Client Information
+      - [ ] Edit Client Billing/Shipping Address
 
 ## Member Work Assignment
 ###### Administrator Module - Java
