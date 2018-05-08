@@ -32,16 +32,16 @@ This is the repository created for the project of the Final quarter of the semes
 5. Monitor Transactions
    - Client users are able to monitor past transactions as well as pending or in-progress transactions with Services availed.
 ## Member Work Assignment
-###### Administrator Module
+###### Administrator Module - Java
   - Jeremiah Pimentel
   - Kyrie Cerezo
   - JC Ramos
-###### Client Module
+###### Client Module - PHP
   - Brian Daclison
   - Von Salazar
   - Justine Ray Dungan
   - John Louie
-###### Service Provider Module
+###### Service Provider Module - Node.js
   - Von Cruz
   - Ojoj Nel Dela Cruz
   - Louise Magalong
