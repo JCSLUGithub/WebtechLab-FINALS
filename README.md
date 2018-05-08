@@ -35,18 +35,18 @@ This is the repository created for the project of the Final quarter of the semes
 ###### Administrator Module
   - Jeremiah Pimentel
   - Kyrie Cerezo
-  - Justine Ray Dungan
-  - Weng Palpallatoc
-###### Client/Service Provider Module Back-End
+  - JC Ramos
+###### Client Module
   - Brian Daclison
   - Von Salazar
-  - JC Ramos
-  - Steven Mark Gerald Mangati
-###### Client/Service Provider Module Front-End
-  - Von Cruz
+  - Justine Ray Dungan
   - John Louie
+###### Service Provider Module
+  - Von Cruz
   - Ojoj Nel Dela Cruz
   - Louise Magalong
+  - Steven Mark Gerald Mangati
+  - Weng Palpallatoc
 
 ###### Final Documentation Editors:
   - JC Ramos
