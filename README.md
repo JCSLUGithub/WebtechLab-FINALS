@@ -130,8 +130,7 @@ This is the repository created for the project of the Final quarter of the semes
   - Steven Mark Gerald Mangati
   - Weng Palpallatoc
 
-###### Client Module
-- PHP
+###### Client Module - PHP
   - Brian Daclison
   - Von Salazar
   - Justine Ray Dungan
