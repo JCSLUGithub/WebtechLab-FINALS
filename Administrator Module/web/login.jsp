@@ -32,7 +32,7 @@
                             <input class="btn btn-primary btn-block" type="submit" value="Login">
                         </form>
                         <div class="text-center">
-                            <a class="d-block small mt-3">Welcome to the Administration log-in page</a>
+                            <a class="d-block small mt-3">Welcome to the Administration log-in page.</a>
                             <a class="d-block small">Please enter your assigned Admin account.</a>
                         </div>
                     </div>

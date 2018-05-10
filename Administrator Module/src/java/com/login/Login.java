@@ -11,25 +11,20 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
-    
-    public Login(){
-        super();
-    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String uname = request.getParameter("username");
-        String pass = request.getParameter("password");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         
         LoginDao dao = new LoginDao();
         
-        if(dao.check(uname, pass)) {
+        if(dao.check(username, password)) {
             HttpSession session = request.getSession();
-            session.setAttribute("username", uname);
+            session.setAttribute("username", username);
             response.sendRedirect("index.jsp");
         } else {
             response.sendRedirect("login.jsp");
         }
-            
     }
-    
+
 }

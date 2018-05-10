@@ -18,11 +18,12 @@
             }
         %>
         
-        <h1>INDEX.jsp Page</h1>
+        <h1>Welcome to the index.jsp page, Administrator ${username}.</h1>
         
-        <!--form action="Logout">
-            <input type="submit" value="Logout">
-        </form-->
+        <h2>Click on the button below to logout:</h2>
+        <form action="Logout">
+            <input type="submit" value="LOGOUT">
+        </form>
         
     </body>
 </html>
