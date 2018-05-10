@@ -34,7 +34,7 @@ This is the repository created for the project of the Final quarter of the semes
 
 ## Task Checklist
 ###### Administrator Module
-- [ ] Account Log-in
+- [X] Account Log-in
 - [ ] User Account Management
    - [ ] Client User Account Management
       - [ ] Add Client Account
