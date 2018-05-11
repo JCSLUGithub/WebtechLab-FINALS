@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class LoginDao {
     
     String sql = "SELECT * FROM administrators WHERE AdminUserName=? AND AdminPass=?";
-    String url = "jdbc:mysql://localhost:3306/loginregistration";
+    String url = "jdbc:mysql://localhost:3306/weblove_attirerentals";
     
     public boolean check(String AdminUserName, String AdminPass) {
         try {
