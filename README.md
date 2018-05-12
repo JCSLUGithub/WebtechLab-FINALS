@@ -54,8 +54,8 @@ This is the repository created for the project of the Final quarter of the semes
    - [ ] Edit Profile Details
 - [ ] Super Administrator Capabilities
    - [ ] Edit Profile Details
-   - [ ] Add an Administrator Account
-   - [ ] Remove an Administrator Account
+   - [X] Add an Administrator Account
+   - [X] Remove an Administrator Account
    - [ ] Edit Administrator Profile Information
 ###### Service Provider Module
 - [ ] Account Registration
