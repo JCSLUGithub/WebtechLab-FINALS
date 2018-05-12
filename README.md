@@ -36,15 +36,15 @@ This is the repository created for the project of the Final quarter of the semes
 ###### Administrator Module
 - [X] Account Log-in
 - [ ] User Account Management
-   - [ ] Client User Account Management
-      - [ ] Add Client Account
-      - [ ] Remove Client Account
+   - [X] Client User Account Management
+      - [X] Add Client Account
+      - [X] Remove Client Account
    - [ ] Service Proider User Account Management
-      - [ ] Add Service Provider Account
-      - [ ] Remove Service Provider Account
+      - [X] Add Service Provider Account
+      - [X] Remove Service Provider Account
       - [ ] Approve/Reject Registration Request
-- [ ] Product Item Management
-   - [ ] Removal of a Product
+- [X] Product Item Management
+   - [X] Removal of a Product
 - [ ] Client Reservation Management and Monitoring
    - [ ] Reservations Made by Clients to Service Providers can be Seen
 - [ ] Transaction Management and Monitoring
