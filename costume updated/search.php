@@ -16,21 +16,30 @@ include 'inc/header.php';
 
 		if($queryResult > 0){
 			while($row = mysqli_fetch_assoc($result)){
-				echo "<div>
-					<h3>".$row['name']."</h3>
-					<h3>".$row['rental_price']."</h3>
-					</div>"
-					?>
+				?>
+			<div class="col-md-4">
+				<form method="post" action="costumes.php?action=add&id=<?php echo $row["id"]; ?>">
+					<div class="panel">
+					<div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
+						<img src="images/<?php echo $row["product_image"]; ?>" class="img-responsive" /><br />
 
-					<img src="images/<?php echo $row["product_image"]; ?>" class="img-responsive" />
-					<?php
-			}
+						<h4 class="text-info"><?php echo $row["name"]; ?></h4>
 
-		}else{
-			echo "There are no results matching your search!";
-		}
+						<h4 class="text-danger">$ <?php echo $row["rental_price"]; ?></h4>
+
+						<input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
+
+						<input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+
+					</div>
+				</div>
+				</form>
+			</div>
+			<?php
+
+		}	
 	}
-
+}	
 
 	?>
 </div>

@@ -42,13 +42,10 @@
 
       </div>
             <li class="nav-item">
-              <a class="nav-link" href="#costumes">Costumes</a>
+              <a class="nav-link" href="index.php #costumes">Costumes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#attires">Attires</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#others">Others</a>
+              <a class="nav-link" href="index.php #attires">Attires</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="halloween.php">Rentals</a>

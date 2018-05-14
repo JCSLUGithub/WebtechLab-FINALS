@@ -106,10 +106,7 @@ if(isset($_GET["action"]))
               <a class="nav-link" href="#attires">Attires</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#others">Others</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="halloween.php">Rentals</a>
+              <a class="nav-link" href="costumes.php">Rentals</a>
             </li>
              <li class="nav-item">
               <a class="nav-link" href="#about">About</a>
@@ -153,7 +150,7 @@ if(isset($_GET["action"]))
           </div>
            
           <!-- Costume Section -->
-        <section id="Costumes">
+        <section id="costumes">
        <div class="container">
              <h1 class="text-center text-uppercase text-secondary mb-0">Costumes</h1>
              <br>
@@ -324,14 +321,6 @@ WHERE product_category.category_name = 'christmas' ";
           }
         }
       ?>
-      </section>
-      <!-- Others -->
-        
-
-      <section id="others">
-       <div class="container">
-             <h1 class="text-center text-uppercase text-secondary mb-0">Others</h1>
-             <br>
           <?php
         $query = "SELECT product.name, product.rental_price, product.description, product_category.category_name,  concat(serviceprovider.owner_firstname,'', serviceprovider.owner_lastname), product.product_image FROM product JOIN serviceprovider ON product.product_providerid = serviceprovider.serviceprov_id
 		JOIN product_category ON product_category.category_id = product.category_id

@@ -53,10 +53,14 @@ if(isset($_GET["action"]))
 
 ?>
 <?php include 'inc/header.php'; ?>
+<br /><br />
+	  <h3 align="center">
+	      <a href="costumes.php" class="btn btn-info" role="button">Costumes</a>
+	      <a href="attires.php" class="btn btn-info" role="button">Attires</a></h3>
       <h3 align="center">
-      <a href="halloween.php" class="btn btn-info" role="button">Halloween</a>
-      <a href="christmas.php" class="btn btn-info" role="button">Christmas</a>
-      <a href="cosplay.php" class="btn btn-info" role="button">Cosplay</a></h3>
+	      <a href="halloween.php" class="btn btn-info" role="button">Halloween</a>
+	      <a href="christmas.php" class="btn btn-info" role="button">Christmas</a>
+	      <a href="cosplay.php" class="btn btn-info" role="button">Cosplay</a></h3>
       <br/>
 			<?php
 				$query = "SELECT * FROM cosplay ORDER BY id ASC";
