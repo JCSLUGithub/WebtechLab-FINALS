@@ -1,6 +1,5 @@
 package com.login;
 
-import com.login.dao.LoginDao;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,8 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
-
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -25,6 +25,7 @@ public class Login extends HttpServlet {
         } else {
             response.sendRedirect("login.jsp");
         }
+        
     }
 
 }
