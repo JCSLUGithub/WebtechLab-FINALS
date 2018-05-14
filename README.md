@@ -80,8 +80,8 @@ This is the repository created for the project of the Final quarter of the semes
       - [ ] Edit Contact Information
       - [ ] Edit Service Provider Business Address
 ###### Client Module
-- [ ] Account Registration
-- [ ] Account Log-in
+- [X] Account Registration
+- [X] Account Log-in
 - [ ] Website Service Use
    - [ ] Product Search
       - [ ] Product Browse
