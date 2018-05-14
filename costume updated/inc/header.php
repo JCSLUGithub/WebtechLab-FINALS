@@ -26,34 +26,41 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-			<div class="md-form active-cyan-2 mb-3">
-				<input class="form-control" type="text" placeholder="Search" aria-label="Search">
-			</div>
+            <form action="search.php" method="POST" class="md-form active-cyan-2 mb-3">
+      
+        <input class="form-control" name="search" type="text" placeholder="Search" aria-label="Search">
+      </form>
+      <div>
+      
+      <?php
+      
+      //$topic=$_REQUEST["topic"];
+      $sql = $query = "SELECT product.name, product.rental_price, concat(serviceprovider.owner_firstname, ' ', serviceprovider.owner_lastname), product_category.category_name from product JOIN product_category on product.category_id = product_category.category_id JOIN serviceprovider on product.product_providerid = serviceprovider.serviceprov_id WHERE product.name LIKE '%casual%'";
+      $result = mysqli_query($connect,$sql);
+
+      ?>
+
+      </div>
             <li class="nav-item">
-              <a class="nav-link" href="index.php#costumes">Costumes</a>
+              <a class="nav-link" href="#costumes">Costumes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php#attires">Attires</a>
+              <a class="nav-link" href="#attires">Attires</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php#others">Others</a>
+              <a class="nav-link" href="#others">Others</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="costumes.php">Rentals</a>
+              <a class="nav-link" href="halloween.php">Rentals</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="index.php#about">About</a>
+              <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
+              <a class="nav-link" href="login.php">Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-		<br />
-		<div class="container">
-			<br />
-			<br />
-			<h3 align="center"><a href="costumes.php" class="btn btn-primary" role="button">Costumes</a>
-			<a href="attires.php" class="btn btn-primary" role="button">Attires</a></h3>
+	

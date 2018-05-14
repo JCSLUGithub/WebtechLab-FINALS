@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$connect = mysqli_connect("localhost", "root", "", "weblove_attirerentals");
+$connect = mysqli_connect("localhost", "root", "", "weblove_attires");
 
 if(isset($_POST["add_to_cart"]))
 {
@@ -85,19 +85,25 @@ if(isset($_GET["action"]))
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
           	<form action="search.php" method="POST" class="md-form active-cyan-2 mb-3">
-    	
 				<input class="form-control" name="search" type="text" placeholder="Search" aria-label="Search">
 			</form>
 			<div>
-			
 			<?php
-			
-			//$topic=$_REQUEST["topic"];
-			$sql = $query = "SELECT product.name, product.rental_price, concat(serviceprovider.owner_firstname, ' ', serviceprovider.owner_lastname), product_category.category_name from product JOIN product_category on product.category_id = product_category.category_id JOIN serviceprovider on product.product_providerid = serviceprovider.serviceprov_id WHERE product.name LIKE '%casual%'";
-			$result = mysqli_query($connect,$sql);
-			$queryResults = mysqli_num_rows($result);	
-			?>
+			$casualQuery = "SELECT porduct.name, product.product_price FROM product join product_category on product.category_id = product_category.category_id where product_category.category_name = 'casual';";
+			$result = mysqli_query($connect,$casualQuery);
+			$queryResults = mysqli_num_rows($result);
 
+			if ($queryResults > 0) {
+				while ($row = mysqli_fetch_assoc($result)) {
+					echo "<div>
+					<h3>".$row['name']."</h3>
+					<h3>".$row['rental_price']."</h3>
+					</div>";
+				}
+			}
+
+
+			?>
 			</div>
             <li class="nav-item">
               <a class="nav-link" href="#costumes">Costumes</a>
@@ -123,15 +129,13 @@ if(isset($_GET["action"]))
     </nav>
 
     <!-- Page Content -->
-  <div class="container">
+   <div class="container">
  <header class="jumbotron my-4">
         <h1 class="display-3">Welcome Customer!</h1>
         <p class="lead">Need a costume for a party? Need an attire for an event? We got everything you need here at Costumes and Attires. We offer costumes and attires rentals for those who can't afford to buy brand new costumes or attires that will be use once. So shop now with us!</p>
-        <a href="login.html" class="btn btn-primary btn-lg">Sign Up Now</a>
+        <a href="login.php" class="btn btn-primary btn-lg">Sign Up Now</a>
       </header>
-      <div class="row">
-
-        <div class="col">
+          <div class="col">
           <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -157,11 +161,9 @@ if(isset($_GET["action"]))
        <div class="container">
              <h1 class="text-center text-uppercase text-secondary mb-0">Costumes</h1>
              <br>
-		<?php
-        $query = "SELECT product.name, product.rental_price, product.description, product_category.category_name,  concat(serviceprovider.owner_firstname, '', serviceprovider.owner_lastname), product.product_image FROM product JOIN serviceprovider ON product.product_providerid = serviceprovider.serviceprov_id
-			JOIN product_category ON product_category.category_id = product.category_id
-			WHERE product_category.category_name = 'halloween' ";
-        $result = mysqli_query($connect, $query);
+<?php
+        $halloweenQuery = "SELECT porduct.name, product.product_price FROM product join product_category on product.category_id = product_category.category_id where product_category.category_name = 'holloween';";
+        $result = mysqli_query($connect, $halloweenQuery);
         if(mysqli_num_rows($result) > 0)
         {
           while($row = mysqli_fetch_array($result))
@@ -171,15 +173,15 @@ if(isset($_GET["action"]))
         <form method="post" action="costumes.php?action=add&id=<?php echo $row["id"]; ?>">
           <div class="panel">
           <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-            <img src="images/<?php echo $row["product_image"]; ?>" class="img-responsive" /><br />
+            <img src="images/<?php echo $row["image"]; ?>" class="img-responsive" /><br />
 
             <h4 class="text-info"><?php echo $row["name"]; ?></h4>
-            <h4 class="text-info"><?php echo $row["concat(serviceprovider.owner_firstname, '', serviceprovider.owner_lastname)"]; ?></h4>
-            <h4 class="text-danger">₱ <?php echo $row["rental_price"]; ?></h4>
+
+            <h4 class="text-danger">$ <?php echo $row["rental_price"]; ?></h4>
 
             <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
 
-            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+            <input type="hidden" name="hidden_price" value="<?php echo $row["rental_price"]; ?>" />
 
           </div>
         </div>
@@ -190,11 +192,8 @@ if(isset($_GET["action"]))
         }
       ?>
       <?php
-        $query = "SELECT product.name, product.rental_price, product.description, product_category.category_name,  concat(serviceprovider.owner_firstname,'' , serviceprovider.owner_lastname), product.product_image FROM product JOIN serviceprovider ON product.product_providerid = serviceprovider.serviceprov_id
-JOIN product_category ON product_category.category_id = product.category_id
-WHERE product_category.category_name = 'cosplay' ";
-;
-        $result = mysqli_query($connect, $query);
+        $cosplayQuery = "SELECT porduct.name, product.product_price FROM product join product_category on product.category_id = product_category.category_id where product_category.category_name = 'cosplay';";
+        $result = mysqli_query($connect, $cosplayQuery);
         if(mysqli_num_rows($result) > 0)
         {
           while($row = mysqli_fetch_array($result))
@@ -204,15 +203,15 @@ WHERE product_category.category_name = 'cosplay' ";
         <form method="post" action="costumes.php?action=add&id=<?php echo $row["id"]; ?>">
           <div class="panel">
           <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-            <img src="images/<?php echo $row["product_image"]; ?>" class="img-responsive" /><br />
+            <img src="images/<?php echo $row["image"]; ?>" class="img-responsive" /><br />
 
             <h4 class="text-info"><?php echo $row["name"]; ?></h4>
 
-            <h4 class="text-danger">₱ <?php echo $row["rental_price"]; ?></h4>
+            <h4 class="text-danger">$ <?php echo $row["rental_price"]; ?></h4>
 
             <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
 
-            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+            <input type="hidden" name="hidden_price" value="<?php echo $row["rental_price"]; ?>" />
 
           </div>
         </div>
@@ -223,10 +222,8 @@ WHERE product_category.category_name = 'cosplay' ";
         }
       ?>
       <?php
-        $query = "SELECT product.name, product.rental_price, product.description, product_category.category_name,  concat(serviceprovider.owner_firstname,'', serviceprovider.owner_lastname), product.product_image FROM product JOIN serviceprovider ON product.product_providerid = serviceprovider.serviceprov_id
-JOIN product_category ON product_category.category_id = product.category_id
-WHERE product_category.category_name = 'christmas' ";
-        $result = mysqli_query($connect, $query);
+        $christmasQuery = "SELECT porduct.name, product.product_price FROM product join product_category on product.category_id = product_category.category_id where product_category.category_name = 'christmas';";
+        $result = mysqli_query($connect, $christmasQuery);
         if(mysqli_num_rows($result) > 0)
         {
           while($row = mysqli_fetch_array($result))
@@ -236,15 +233,15 @@ WHERE product_category.category_name = 'christmas' ";
         <form method="post" action="costumes.php?action=add&id=<?php echo $row["id"]; ?>">
           <div class="panel">
           <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-            <img src="images/<?php echo $row["product_image"]; ?>" class="img-responsive" /><br />
+            <img src="images/<?php echo $row["image"]; ?>" class="img-responsive" /><br />
 
             <h4 class="text-info"><?php echo $row["name"]; ?></h4>
 
-            <h4 class="text-danger">₱<?php echo $row["rental_price"]; ?></h4>
+            <h4 class="text-danger">$<?php echo $row["price"]; ?></h4>
 
             <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
 
-            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+            <input type="hidden" name="hidden_price" value="<?php echo $row["rental_price"]; ?>" />
 
           </div>
         </div>
@@ -261,10 +258,8 @@ WHERE product_category.category_name = 'christmas' ";
              <h1 class="text-center text-uppercase text-secondary mb-0">Attires</h1>
              <br>
         <?php
-        $query = "SELECT product.name, product.rental_price, product.description, product_category.category_name,  concat(serviceprovider.owner_firstname,'', serviceprovider.owner_lastname), product.product_image FROM product JOIN serviceprovider ON product.product_providerid = serviceprovider.serviceprov_id
-			JOIN product_category ON product_category.category_id = product.category_id
-			WHERE product_category.category_name = 'casual' ";
-        $result = mysqli_query($connect, $query);
+        $formalQuery = "SELECT porduct.name, product.product_price FROM product join product_category on product.category_id = product_category.category_id where product_category.category_name = 'formal';";
+        $result = mysqli_query($connect, $formalQuery);
         if(mysqli_num_rows($result) > 0)
         {
           while($row = mysqli_fetch_array($result))
@@ -274,47 +269,15 @@ WHERE product_category.category_name = 'christmas' ";
         <form method="post" action="costumes.php?action=add&id=<?php echo $row["id"]; ?>">
           <div class="panel">
           <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-            <img src="images/<?php echo $row["product_image"]; ?>" class="img-responsive" /><br />
+            <img src="images/<?php echo $row["image"]; ?>" class="img-responsive" /><br />
 
             <h4 class="text-info"><?php echo $row["name"]; ?></h4>
 
-            <h4 class="text-danger">₱ <?php echo $row["rental_price"]; ?></h4>
+            <h4 class="text-danger">₱ <?php echo $row["price"]; ?></h4>
 
             <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
 
-            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
-
-          </div>
-        </div>
-        </form>
-      </div>
-      <?php
-          }
-        }
-      ?>
-      <?php
-        $query = "SELECT product.name, product.rental_price, product.description, product_category.category_name,  concat(serviceprovider.owner_firstname,'', serviceprovider.owner_lastname), product.product_image FROM product JOIN serviceprovider ON product.product_providerid = serviceprovider.serviceprov_id
-		JOIN product_category ON product_category.category_id = product.category_id
-		WHERE product_category.category_name = 'formal'";
-        $result = mysqli_query($connect, $query);
-        if(mysqli_num_rows($result) > 0)
-        {
-          while($row = mysqli_fetch_array($result))
-          {
-        ?>
-      <div class="col-md-4">
-        <form method="post" action="costumes.php?action=add&id=<?php echo $row["id"]; ?>">
-          <div class="panel">
-          <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-            <img src="images/<?php echo $row["product_image"]; ?>" class="img-responsive" /><br />
-
-            <h4 class="text-info"><?php echo $row["name"]; ?></h4>
-
-            <h4 class="text-danger">₱ <?php echo $row["rental_price"]; ?></h4>
-
-            <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
-
-            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+            <input type="hidden" name="hidden_price" value="<?php echo $row["rental_price"]; ?>" />
 
           </div>
         </div>
@@ -333,10 +296,8 @@ WHERE product_category.category_name = 'christmas' ";
              <h1 class="text-center text-uppercase text-secondary mb-0">Others</h1>
              <br>
           <?php
-        $query = "SELECT product.name, product.rental_price, product.description, product_category.category_name,  concat(serviceprovider.owner_firstname,'', serviceprovider.owner_lastname), product.product_image FROM product JOIN serviceprovider ON product.product_providerid = serviceprovider.serviceprov_id
-		JOIN product_category ON product_category.category_id = product.category_id
-		WHERE product_category.category_name = 'others'";
-        $result = mysqli_query($connect, $query);
+        $othersQuery = "SELECT porduct.name, product.product_price FROM product join product_category on product.category_id = product_category.category_id where product_category.category_name = 'others';";
+        $result = mysqli_query($connect, $othersQuery);
         if(mysqli_num_rows($result) > 0)
         {
           while($row = mysqli_fetch_array($result))
@@ -346,15 +307,15 @@ WHERE product_category.category_name = 'christmas' ";
         <form method="post" action="costumes.php?action=add&id=<?php echo $row["id"]; ?>">
           <div class="panel">
           <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-            <img src="images/<?php echo $row["product_image"]; ?>" class="img-responsive" /><br />
+            <img src="images/<?php echo $row["image"]; ?>" class="img-responsive" /><br />
 
             <h4 class="text-info"><?php echo $row["name"]; ?></h4>
 
-            <h4 class="text-danger">₱ <?php echo $row["rental_price"]; ?></h4>
+            <h4 class="text-danger">₱ <?php echo $row["price"]; ?></h4>
 
             <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
 
-            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+            <input type="hidden" name="hidden_price" value="<?php echo $row["rental_price"]; ?>" />
 
           </div>
         </div>
