@@ -45,11 +45,11 @@ This is the repository created for the project of the Final quarter of the semes
       - [ ] Approve/Reject Registration Request
 - [X] Product Item Management
    - [X] Removal of a Product
-- [X] Client Reservation Management and Monitoring
-   - [X] Reservations Made by Clients to Service Providers can be Seen
-- [X] Transaction Management and Monitoring
-   - [X] Completed and Failed Transactions
-   - [X] Transactions In-Progress
+- [ ] Client Reservation Management and Monitoring
+   - [ ] Reservations Made by Clients to Service Providers can be Seen
+- [ ] Transaction Management and Monitoring
+   - [ ] Completed and Failed Transactions
+   - [ ] Transactions In-Progress
 - [ ] Administrator Profile
    - [ ] Edit Profile Details
 - [ ] Super Administrator Capabilities
