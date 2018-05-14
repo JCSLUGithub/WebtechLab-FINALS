@@ -33,16 +33,16 @@ This is the repository created for the project of the Final quarter of the semes
    - Client users are able to monitor past transactions as well as pending or in-progress transactions with Services availed.
 
 ## Task Checklist
-###### Administrator Module
+###### Administrator Module - COMPLETE
 - [X] Account Log-in
-- [ ] User Account Management
+- [X] User Account Management
    - [X] Client User Account Management
       - [X] Add Client Account
       - [X] Remove Client Account
    - [ ] Service Proider User Account Management
       - [X] Add Service Provider Account
       - [X] Remove Service Provider Account
-      - [ ] Approve/Reject Registration Request
+      - [X] Approve/Reject Registration Request
 - [X] Product Item Management
    - [X] Removal of a Product
 - [X] Client Reservation Management and Monitoring
