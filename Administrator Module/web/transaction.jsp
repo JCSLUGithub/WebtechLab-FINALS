@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Administrator - Home</title>
+        <title>Administrator - Transactions</title>
         <!-- Bootstrap core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom fonts for this template -->
@@ -18,13 +18,6 @@
     </head>
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         
-        <!-- Side Bar Icons -->
-        <!---->
-        <!--"fa fa-fw fa-sitemap"-->
-        <!--"fa fa-fw fa-area-chart"-->
-        <!--"fa fa-fw fa-file"-->
-        
-        <!-- Check if user is logged in -->
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
@@ -93,67 +86,17 @@
         </nav>
         <div class="content-wrapper">
           <div class="container-fluid">
-            
-            <!-- Registered Account Table-->
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="index.jsp">Dashboard</a>
+              </li>
+              <li class="breadcrumb-item active">Transaction Management</li>
+            </ol>
+        
             <div class="card mb-3">
               <div class="card-header">
-                <i class="fa fa-table"></i><b> REGISTERED CLIENT ACCOUNTS</b></div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                      
-                    <thead>
-                      <tr>
-                        <th>Client ID</th>
-                        <th>e-Mail</th>
-                        <th>Name</th>
-                        <th>User Address</th>
-                        <th>Registration Date</th>
-                        <th>Account Type</th>
-                      </tr>
-                    </thead>
-                      
-                    <%
-                      String url = "jdbc:mysql://localhost:3306/weblove_attirerentals";
-                        
-                      String sqlAccounts = "SELECT client_id, email, CONCAT(firstname, ' ', "
-                              + "lastname), CONCAT(address_line, ' ', city, ' ', province), "
-                              + "registration_date FROM client;";
-                      
-                      try {
-                          Class.forName("com.mysql.jdbc.Driver");
-                          Connection con = DriverManager.getConnection(url, "root", "");
-                          Statement st = con.createStatement();
-                          ResultSet rSet = st.executeQuery(sqlAccounts);
-                          
-                          while (rSet.next()) {
-                    %>  
-                      
-                    <tbody>
-                      <tr>
-                        <td><%=rSet.getString("client_id")%></td>
-                        <td><%=rSet.getString("email")%></td>
-                        <td><%=rSet.getString("CONCAT(firstname, ' ', lastname)")%></td>
-                        <td><%=rSet.getString("CONCAT(address_line, ' ', city, ' ', province)")%></td>
-                        <td><%=rSet.getString("registration_date")%></td>
-                        <td>Client</td>
-                      </tr>
-                    </tbody>
-                    
-                    <%
-                            }
-                        } catch(Exception e) {
-                            e.printStackTrace();
-                        }
-                    %>
-                  </table>
-                </div>
-              </div>
-            </div>
-            
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fa fa-table"></i><b> CURRENTLY IN-PROGRESS TRANSACTIONS</b></div>
+                <i class="fa fa-table"></i><b> COMPLETED TRANSACTIONS</b></div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -165,42 +108,163 @@
                     <%@page import="java.sql.Statement"%>
                     
                     <thead>
-                      <tr>
-                        <th>Reservation Number</th>
-                        <th>Client Name</th>
-                        <th>Client ID</th>
-                        <th>Date of Reservation</th>
-                        <th>Pick-up Date</th>
-                      </tr>
+                        <tr>
+                            <td><b>Client ID</b></td>
+                            <td><b>Client Name</b></td>
+                            <td><b>Product Name</b></td>
+                            <td><b>Product Code</b></td>
+                            <td><b>Reservation Number</b></td>
+                            <td><b>Reservation Date</b></td>
+                            <td><b>Pick-up Date</b></td>
+                            <td><b>Status</b></td>
+                        </tr>
                     </thead>
-                      
-                    <%
-                      String sqlTransactions = "SELECT client.client_id, "
-                      + "CONCAT(client.firstname,' ', client.lastname), "
-                      + "product.name, product.product_code, "
-                      + "transaction.reservation_number,  transaction.reservation_date, "
-                      + "transaction.pickup_date, transaction.status FROM transaction "
-                      + "JOIN client ON transaction.client_id = client.client_id "
-                      + "JOIN product ON transaction.product_code = product.product_code "
-                      + "WHERE transaction.status='In-Progress';";
 
-                      try {
-                          Class.forName("com.mysql.jdbc.Driver");
-                          Connection con = DriverManager.getConnection(url, "root", "");
-                          Statement st = con.createStatement();
-                          ResultSet rSet = st.executeQuery(sqlTransactions);
-                          
-                          while (rSet.next()) {
-                      %>
-                      
+                    <%  
+                        String resultComplete = "SELECT client.client_id, CONCAT(client.firstname,' ', client.lastname), "
+                        + "product.name, product.product_code,  transaction.reservation_number,  transaction.reservation_date, "
+                        + "transaction.pickup_date, transaction.status FROM transaction JOIN client ON transaction.client_id = client.client_id "
+                        + "JOIN product ON transaction.product_code = product.product_code WHERE transaction.status='Completed';";
+
+                        String url = "jdbc:mysql://localhost:3306/weblove_attirerentals";
+
+                        try {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            Connection con = DriverManager.getConnection(url, "root", "");
+                            Statement st = con.createStatement();
+                            ResultSet rSet = st.executeQuery(resultComplete);
+                            while (rSet.next()) {
+                    %>
+                    
                     <tbody>
-                      <tr>
-                        <td><%=rSet.getString("reservation_number")%></td>
-                        <td><%=rSet.getString("CONCAT(client.firstname,' ', client.lastname)")%></td>
-                        <td><%=rSet.getString("client_id")%></td>
-                        <td><%=rSet.getString("reservation_date")%></td>
-                        <td><%=rSet.getString("pickup_date")%></td>
-                      </tr>
+                        <tr>
+                            <td><%=rSet.getString("client_id")%></td>
+                            <td><%=rSet.getString("CONCAT(client.firstname,' ', client.lastname)")%></td>
+                            <td><%=rSet.getString("name")%></td>
+                            <td><%=rSet.getString("product_code")%></td>
+                            <td><%=rSet.getString("reservation_number")%></td>
+                            <td><%=rSet.getString("reservation_date")%></td>
+                            <td><%=rSet.getString("pickup_date")%></td>
+                            <td><%=rSet.getString("status")%></td>
+                        </tr>
+                    </tbody>
+
+                    <%
+                            }
+                        } catch(Exception e) {
+                            e.printStackTrace();
+                        }
+                    %>
+                    
+                  </table>
+                </div>
+              </div>
+            </div>
+                    
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fa fa-table"></i><b> CURRENTLY IN-PROGRESS TRANSACTIONS</b></div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    
+                    <thead>
+                        <tr>
+                            <td><b>Client ID</b></td>
+                            <td><b>Client Name</b></td>
+                            <td><b>Product Name</b></td>
+                            <td><b>Product Code</b></td>
+                            <td><b>Reservation Number</b></td>
+                            <td><b>Reservation Date</b></td>
+                            <td><b>Pick-up Date</b></td>
+                            <td><b>Status</b></td>
+                        </tr>
+                    </thead>
+
+                    <%
+                        String resultProgress = "SELECT client.client_id, CONCAT(client.firstname,' ', client.lastname), "
+                        + "product.name, product.product_code,  transaction.reservation_number,  transaction.reservation_date, "
+                        + "transaction.pickup_date, transaction.status FROM transaction JOIN client ON transaction.client_id = client.client_id "
+                        + "JOIN product ON transaction.product_code = product.product_code WHERE transaction.status='In-Progress';";
+
+
+                        try {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            Connection con = DriverManager.getConnection(url, "root", "");
+                            Statement st = con.createStatement();
+                            ResultSet rSet = st.executeQuery(resultProgress);
+                            while (rSet.next()) {
+                    %>
+
+                    <tbody>
+                        <tr>
+                            <td><%=rSet.getString("client_id")%></td>
+                            <td><%=rSet.getString("CONCAT(client.firstname,' ', client.lastname)")%></td>
+                            <td><%=rSet.getString("name")%></td>
+                            <td><%=rSet.getString("product_code")%></td>
+                            <td><%=rSet.getString("reservation_number")%></td>
+                            <td><%=rSet.getString("reservation_date")%></td>
+                            <td><%=rSet.getString("pickup_date")%></td>
+                            <td><%=rSet.getString("status")%></td>
+                        </tr>
+                    </tbody>
+
+                    <%
+                            }
+                        } catch(Exception e) {
+                            e.printStackTrace();
+                        }
+                    %>
+                </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fa fa-table"></i><b> FAILED TRANSACTIONS</b></div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td><b>Client ID</b></td>
+                            <td><b>Client Name</b></td>
+                            <td><b>Product Name</b></td>
+                            <td><b>Product Code</b></td>
+                            <td><b>Reservation Number</b></td>
+                            <td><b>Reservation Date</b></td>
+                            <td><b>Pick-up Date</b></td>
+                            <td><b>Status</b></td>
+                        </tr>
+                    </thead>
+
+                    <%
+                        String resultFailed = "SELECT client.client_id, CONCAT(client.firstname,' ', client.lastname), "
+                        + "product.name, product.product_code,  transaction.reservation_number,  transaction.reservation_date, "
+                        + "transaction.pickup_date, transaction.status FROM transaction JOIN client ON transaction.client_id = client.client_id "
+                        + "JOIN product ON transaction.product_code = product.product_code WHERE transaction.status='Failed';";
+
+
+                        try {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            Connection con = DriverManager.getConnection(url, "root", "");
+                            Statement st = con.createStatement();
+                            ResultSet rSet = st.executeQuery(resultFailed);
+                            while (rSet.next()) {
+                    %>
+                    
+                    <tbody>
+                        <tr>
+                            <td><%=rSet.getString("client_id")%></td>
+                            <td><%=rSet.getString("CONCAT(client.firstname,' ', client.lastname)")%></td>
+                            <td><%=rSet.getString("name")%></td>
+                            <td><%=rSet.getString("product_code")%></td>
+                            <td><%=rSet.getString("reservation_number")%></td>
+                            <td><%=rSet.getString("reservation_date")%></td>
+                            <td><%=rSet.getString("pickup_date")%></td>
+                            <td><%=rSet.getString("status")%></td>
+                        </tr>
                     </tbody>
                     
                     <%
@@ -208,12 +272,12 @@
                         } catch(Exception e) {
                             e.printStackTrace();
                         }
-                    %>  
-                  </table>
+                    %>
+                </table>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
           <!-- /.container-fluid-->
           <!-- /.content-wrapper-->
           <footer class="sticky-footer">

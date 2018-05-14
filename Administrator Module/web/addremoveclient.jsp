@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Administrator - Home</title>
+        <title>Administrator - User Management</title>
         <!-- Bootstrap core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom fonts for this template -->
@@ -16,15 +16,9 @@
         <!-- Custom styles for this template -->
         <link href="css/sb-admin.css" rel="stylesheet">
     </head>
+    
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         
-        <!-- Side Bar Icons -->
-        <!---->
-        <!--"fa fa-fw fa-sitemap"-->
-        <!--"fa fa-fw fa-area-chart"-->
-        <!--"fa fa-fw fa-file"-->
-        
-        <!-- Check if user is logged in -->
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
@@ -93,127 +87,113 @@
         </nav>
         <div class="content-wrapper">
           <div class="container-fluid">
-            
-            <!-- Registered Account Table-->
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fa fa-table"></i><b> REGISTERED CLIENT ACCOUNTS</b></div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                      
-                    <thead>
-                      <tr>
-                        <th>Client ID</th>
-                        <th>e-Mail</th>
-                        <th>Name</th>
-                        <th>User Address</th>
-                        <th>Registration Date</th>
-                        <th>Account Type</th>
-                      </tr>
-                    </thead>
-                      
-                    <%
-                      String url = "jdbc:mysql://localhost:3306/weblove_attirerentals";
-                        
-                      String sqlAccounts = "SELECT client_id, email, CONCAT(firstname, ' ', "
-                              + "lastname), CONCAT(address_line, ' ', city, ' ', province), "
-                              + "registration_date FROM client;";
-                      
-                      try {
-                          Class.forName("com.mysql.jdbc.Driver");
-                          Connection con = DriverManager.getConnection(url, "root", "");
-                          Statement st = con.createStatement();
-                          ResultSet rSet = st.executeQuery(sqlAccounts);
-                          
-                          while (rSet.next()) {
-                    %>  
-                      
-                    <tbody>
-                      <tr>
-                        <td><%=rSet.getString("client_id")%></td>
-                        <td><%=rSet.getString("email")%></td>
-                        <td><%=rSet.getString("CONCAT(firstname, ' ', lastname)")%></td>
-                        <td><%=rSet.getString("CONCAT(address_line, ' ', city, ' ', province)")%></td>
-                        <td><%=rSet.getString("registration_date")%></td>
-                        <td>Client</td>
-                      </tr>
-                    </tbody>
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="index.jsp">Dashboard</a>
+              </li>
+              <li class="breadcrumb-item">Product Management</li>
+              <li class="breadcrumb-item active">Client Accounts</li>
+            </ol>
+        
+        <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i><b> CLIENT ACCOUNT TABLE</b></div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     
-                    <%
-                            }
-                        } catch(Exception e) {
-                            e.printStackTrace();
+                <%@page import="java.sql.Connection"%>
+                <%@page import="java.sql.DriverManager"%>
+                <%@page import="java.sql.PreparedStatement"%>
+                <%@page import="java.sql.ResultSet"%>
+                <%@page import="java.sql.Statement"%>
+
+                <thead>
+                    <tr>
+                        <td><b>Client ID</b></td>
+                        <td><b>Username</b></td>
+                        <td><b>Password</b></td>
+                        <td><b>e-Mail</b></td>
+                        <td><b>First Name</b></td>
+                        <td><b>Last Name</b></td>
+                        <td><b>Phone</b></td>
+                        <td><b>City</b></td>
+                        <td><b>Province</b></td>
+                        <td><b>Postal Code</b></td>
+                        <td><b>Registration Date</b></td>
+                    </tr>
+                </thead>
+
+                <%  
+                    String result = "SELECT * FROM client;";
+                    String url = "jdbc:mysql://localhost:3306/weblove_attirerentals";
+
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection(url, "root", "");
+                        Statement st = con.createStatement();
+                        ResultSet rSet = st.executeQuery(result);
+                        while (rSet.next()) {
+                %>
+
+                <tbody>
+                    <tr>
+                        <td><%=rSet.getInt("client_id")%></td>
+                        <td><%=rSet.getString("username")%></td>
+                        <td><%=rSet.getString("email")%></td>
+                        <td><%=rSet.getString("firstname")%></td>
+                        <td><%=rSet.getString("lastname")%></td>
+                        <td><%=rSet.getString("phone_number")%></td>
+                        <td><%=rSet.getString("address_line")%></td>
+                        <td><%=rSet.getString("city")%></td>
+                        <td><%=rSet.getString("province")%></td>
+                        <td><%=rSet.getString("postal_code")%></td>
+                        <td><%=rSet.getString("registration_date")%></td>
+                    </tr>
+                </tbody>
+
+                <%
                         }
-                    %>
-                  </table>
+                    } catch(Exception e) {
+                        e.printStackTrace();
+                    }
+                %>
+                </table>
+                
+                <form action="RemoveClient" method="post">
+                    <center>
+                        Enter the <b>Client ID</b> of the user you wish to remove:
+                        <br><input name="clientID" type="text"><br>
+                        <br><input name="removeclient" type="submit" value="SUBMIT">
+                    </center>
+                </form>
                 </div>
               </div>
             </div>
-            
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fa fa-table"></i><b> CURRENTLY IN-PROGRESS TRANSACTIONS</b></div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                      
-                    <%@page import="java.sql.Connection"%>
-                    <%@page import="java.sql.DriverManager"%>
-                    <%@page import="java.sql.PreparedStatement"%>
-                    <%@page import="java.sql.ResultSet"%>
-                    <%@page import="java.sql.Statement"%>
-                    
-                    <thead>
-                      <tr>
-                        <th>Reservation Number</th>
-                        <th>Client Name</th>
-                        <th>Client ID</th>
-                        <th>Date of Reservation</th>
-                        <th>Pick-up Date</th>
-                      </tr>
-                    </thead>
-                      
-                    <%
-                      String sqlTransactions = "SELECT client.client_id, "
-                      + "CONCAT(client.firstname,' ', client.lastname), "
-                      + "product.name, product.product_code, "
-                      + "transaction.reservation_number,  transaction.reservation_date, "
-                      + "transaction.pickup_date, transaction.status FROM transaction "
-                      + "JOIN client ON transaction.client_id = client.client_id "
-                      + "JOIN product ON transaction.product_code = product.product_code "
-                      + "WHERE transaction.status='In-Progress';";
-
-                      try {
-                          Class.forName("com.mysql.jdbc.Driver");
-                          Connection con = DriverManager.getConnection(url, "root", "");
-                          Statement st = con.createStatement();
-                          ResultSet rSet = st.executeQuery(sqlTransactions);
-                          
-                          while (rSet.next()) {
-                      %>
-                      
-                    <tbody>
-                      <tr>
-                        <td><%=rSet.getString("reservation_number")%></td>
-                        <td><%=rSet.getString("CONCAT(client.firstname,' ', client.lastname)")%></td>
-                        <td><%=rSet.getString("client_id")%></td>
-                        <td><%=rSet.getString("reservation_date")%></td>
-                        <td><%=rSet.getString("pickup_date")%></td>
-                      </tr>
-                    </tbody>
-                    
-                    <%
-                            }
-                        } catch(Exception e) {
-                            e.printStackTrace();
-                        }
-                    %>  
-                  </table>
-                </div>
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i><b> ADD CLIENT ACCOUNT</b></div>
+            <div class="card-body">
+                <form action="AddClient" method="post">
+                    <center>
+                        Username: <br><input name="username" type="text"><br>
+                        Password: <br><input name="password" type="password"><br>
+                        E-Mail: <br><input name="email" type="text"><br>
+                        First Name: <br><input name="firstName" type="text"><br>
+                        Last Name: <br><input name="lastName" type="text"><br>
+                        Phone: <br><input name="phoneNumber" type="text"><br>
+                        Address Line: <br><input name="addressLine" type="text"><br>
+                        City: <br><input name="city" type="text"><br>
+                        Province: <br><input name="province" type="text"><br>
+                        Postal Code: <br><input name="postalCode" type="text"><br>
+                        <br><input name="registerClient" type="submit" value="SUBMIT"><br>
+                    </center>
+                </form>
               </div>
             </div>
           </div>
+        
           <!-- /.container-fluid-->
           <!-- /.content-wrapper-->
           <footer class="sticky-footer">
