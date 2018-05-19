@@ -51,9 +51,9 @@ This is the repository created for the project of the Final quarter of the semes
    - [X] Completed and Failed Transactions
    - [X] Transactions In-Progress
 ###### Service Provider Module
-- [ ] Account Registration
+- [X] Account Registration
    - [ ] Account Request Confirmation to Administrator
-- [ ] Account Log-in
+- [X] Account Log-in
 - [ ] Service Management
    - [ ] Post Product
       - [ ] Add Product Details
